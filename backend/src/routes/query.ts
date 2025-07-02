@@ -4,9 +4,9 @@ import { PineconeStore } from "@langchain/pinecone";
 import { pineconeIndex } from "../vectorstore/pipecone";
 import { RunnableSequence } from "@langchain/core/runnables";
 
-const router = express.Router();
+const queryRouter = express.Router();
 
-router.get("/", async (req: Request, res: Response) => {
+queryRouter.get("/", async (req: Request, res: Response) => {
   try {
     const question = req.query.q as string;
     if (!question) return res.status(400).send("Missing query param ?q=");
@@ -46,4 +46,4 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
-export default router;
+export default queryRouter;
