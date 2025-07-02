@@ -6,7 +6,7 @@ export default function Home() {
   const upload = async () => {
     const form = new FormData();
     form.append("file", file!);
-    const res = await fetch("http://localhost:3003/upload", {
+    const res = await fetch("http://localhost:3003/upload/", {
       method: "POST",
       body: form,
     });

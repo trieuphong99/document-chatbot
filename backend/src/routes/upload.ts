@@ -19,7 +19,7 @@ uploadRouter.post(
       const text = await extractText(filePath, file.mimetype);
 
       const embedding = new OpenAIEmbeddings({
-        apiKey: process.env.OPENAI_API_KEY as string,
+        openAIApiKey: process.env.OPENAI_API_KEY,
       });
       const vectors = await embedding.embedQuery(text);
 
