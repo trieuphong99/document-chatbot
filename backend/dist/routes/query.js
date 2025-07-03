@@ -1,42 +1,52 @@
-import express from "express";
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
-import { PineconeStore } from "@langchain/pinecone";
-import { pineconeIndex } from "../vectorstore/pipecone";
-import { RunnableSequence } from "@langchain/core/runnables";
-const router = express.Router();
-router.get("/", async (req, res) => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const openai_1 = require("@langchain/openai");
+const pinecone_1 = require("@langchain/pinecone");
+const pipecone_1 = require("../vectorstore/pipecone");
+const runnables_1 = require("@langchain/core/runnables");
+const prompts_1 = require("@langchain/core/prompts");
+const queryRouter = express_1.default.Router();
+queryRouter.get("/", async (req, res) => {
     try {
         const question = req.query.q;
         if (!question)
             return res.status(400).send("Missing query param ?q=");
-        // Initialize embeddings
-        const embeddings = new OpenAIEmbeddings({
+        const embeddings = new openai_1.OpenAIEmbeddings({
             openAIApiKey: process.env.OPENAI_API_KEY,
         });
-        // Initialize vector store
-        const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
-            pineconeIndex,
+        const vectorStore = await pinecone_1.PineconeStore.fromExistingIndex(embeddings, {
+            pineconeIndex: pipecone_1.pineconeIndex,
             textKey: "text",
         });
-        // Initialize chat model (replaces OpenAIChat)
-        const model = new ChatOpenAI({
-            modelName: 'gpt-3.5-turbo',
+        const retriever = vectorStore.asRetriever();
+        const model = new openai_1.ChatOpenAI({
+            modelName: "gpt-4",
             openAIApiKey: process.env.OPENAI_API_KEY,
             temperature: 0.7,
         });
-        // Create retrieval chain
-        const retriever = vectorStore.asRetriever();
-        const chain = RunnableSequence.from([
-            (input) => ({ query: input }),
-            retriever,
-            (docs) => model.invoke(docs),
+        const prompt = prompts_1.ChatPromptTemplate.fromMessages([
+            ["system", "You are a helpful assistant answering based on context."],
+            ["human", "Context:\n{context}\n\nQuestion:\n{question}"],
         ]);
-        const result = await chain.invoke({ query: question });
-        res.json({ question, answer: result.text });
+        const chain = runnables_1.RunnableSequence.from([
+            async (input) => {
+                const docs = await retriever.invoke(input.question);
+                const context = docs.map((doc) => doc.pageContent).join("\n\n");
+                return { question: input.question, context };
+            },
+            prompt,
+            model,
+        ]);
+        const result = await chain.invoke({ question });
+        res.json({ question, answer: result.content });
     }
     catch (err) {
         console.error(err);
         res.status(500).json({ error: "Query failed" });
     }
 });
-export default router;
+exports.default = queryRouter;
