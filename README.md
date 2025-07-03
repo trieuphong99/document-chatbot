@@ -1,6 +1,6 @@
 Backend:
 
-- npm install & npm run dev
+- npm install & npm run start:dev
 
 Frontend:
 

@@ -10,7 +10,6 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { RouteService } from "./route.service";
 import { diskStorage } from "multer";
 import * as path from "path";
-
 @Controller("")
 export class RouteController {
   constructor(private readonly routeService: RouteService) {}
