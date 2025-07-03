@@ -1,0 +1,74 @@
+{
+  "title": "Triệu Hải Phong",
+  "summary": "NodeJS Developer with 5 years of experience in backend development and knowledge of devops domain.",
+  "keywords": [
+    "NodeJS",
+    "Javascript",
+    "Typescript",
+    "AWS",
+    "Postman",
+    "Git",
+    "Blockchain",
+    "Cryptocurrency",
+    "Web3",
+    "Smart contract"
+  ],
+  "sections": [
+    [
+      {
+        "heading": "PROFILE"
+      },
+      {
+        "content": "Contact: 0388124635, Email: trieuphong328@gmail.com, Location: Hanoi, Vietnam"
+      }
+    ],
+    [
+      {
+        "heading": "SKILLS"
+      },
+      {
+        "content": "Programming Languages: Javascript, Typescript, NodeJS, Cloud Services: AWS, Tools: Postman, Git, Gitlab, Blockchain: Cryptocurrency transaction, Smart contract"
+      }
+    ],
+    [
+      {
+        "heading": "INTERESTS"
+      },
+      {
+        "content": "Crafting new knowledge, music, video games"
+      }
+    ],
+    [
+      {
+        "heading": "OBJECTIVE"
+      },
+      {
+        "content": "Always learning new technology of software development and upgrading skills to complete projects at the highest level."
+      }
+    ],
+    [
+      {
+        "heading": "WORK EXPERIENCE"
+      },
+      {
+        "content": "1. ROBUSTO.AIJUN (2023-JUN 2025) - Fullstack Developer, Project: Education Application, Tech Stack: AWS, NestJS, NextJS, Postgres, Responsibilities: Supervised team members, Setup infrastructure resources, Design database schema, Handle big data uploads, Integrated Payment Services, Developed Code Sandbox feature. 2. OMINEXT GROUP (FEB 2022-May 2023) - Fullstack Developer, Projects: B2B/B2C communication SaaS, Techstack: AWS Amplify, Appsync, Python, Django, Javascript, NodeJs, NextJs, ReactJs. 3. AMELA TECHNOLOGY (FEB 2020-FEB 2022) - Backend Developer, Projects: Food Order Applications, Techstack: Express, Typescript, NodeJS, MySQL, MongoDB, Redis."
+      }
+    ],
+    [
+      {
+        "heading": "EDUCATION"
+      },
+      {
+        "content": "Bachelor Degree in Electric and Communication Engineering from Vietnam National University (AUG 2017-JUNE 2021)"
+      }
+    ],
+    [
+      {
+        "heading": "CERTIFICATIONS"
+      },
+      {
+        "content": "AWS Solutions Architect Associate - 2022"
+      }
+    ]
+  ]
+}

@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   Post,
@@ -32,7 +33,7 @@ export class RouteController {
     return this.routeService.uploadFile(file);
   }
 
-  @Get('/query')
+  @Get("/query")
   async handleQuery(@Query("q") question: string) {
     if (!question) {
       return "Missing query param ?q=";
@@ -44,6 +45,20 @@ export class RouteController {
     } catch (error) {
       console.error(error);
       return { error: "Query failed" };
+    }
+  }
+
+  @Post("priority")
+  async setPriority(@Body("name") name: string, @Body("score") score: number) {
+    if (!name || score == null) {
+      return { error: "Missing name or score in request body" };
+    }
+    try {
+      await this.routeService.setPriority(name, score);
+      return { name, score };
+    } catch (error) {
+      console.error(error);
+      return { error: "Failed to set priority" };
     }
   }
 }

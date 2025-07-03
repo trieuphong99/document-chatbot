@@ -24,10 +24,10 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/ask": [
+    "/docs/[...slug]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/ask.js"
+      "static/chunks/pages/docs/[...slug].js"
     ]
   },
   "ampFirstPages": []

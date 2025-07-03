@@ -1,0 +1,54 @@
+{
+  "title": "Lesson 2",
+  "summary": "RAG makes models think before they speak. This document covers various components, testing methods, deployment, and operation of RAG.",
+  "keywords": [
+    "RAG",
+    "MLOps",
+    "Retrieval",
+    "Generator",
+    "Testing",
+    "Deployment",
+    "Operation"
+  ],
+  "sections": [
+    {
+      "Introduction": "RAG makes models think before they speak."
+    },
+    {
+      "Components of RAG": "This section covers the various components of RAG including User Retrieval, Database APIs, LLM, Query Input, Generated Output, and more."
+    },
+    {
+      "Retrieval in RAG": "This section discusses different types of retrieval methods in RAG such as Keyword Search, Semantic Search, Hybrid Search, and Custom Hybrid Search."
+    },
+    {
+      "Reranking Retrieval in RAG": "This section talks about reranking retrieval results in RAG to optimize personalized information."
+    },
+    {
+      "Generator in RAG": "This section covers the generator in RAG which includes LLM, Retrieval Results, Query Input, and Final Output."
+    },
+    {
+      "Test and debug in RAG": "This section covers functional testing, unit testing, integration testing, and end-to-end testing in RAG."
+    },
+    {
+      "Retrieval Testing in RAG": "This section discusses the objectives and examples of retrieval testing in RAG."
+    },
+    {
+      "Type Search Testing in RAG": "This section covers the different types of search testing in RAG such as Keyword Search, Semantic Search, Advanced Semantic Search, Hybrid Search, and Custom Hybrid Search."
+    },
+    {
+      "Token Prompt Testing in RAG": "This section discusses prompt testing in RAG including the number of tokens in and out."
+    },
+    {
+      "Output Prompt Testing in RAG": "This section covers output prompt testing in RAG including matching user questions and enunciation."
+    },
+    {
+      "Jailbreak Prompt Testing in RAG": "This section talks about jailbreak prompt testing in RAG to prevent unrelated or sensitive questions."
+    },
+    {
+      "Best Practise Testing in RAG": "This section covers best practice testing in RAG including isolating components for testing and keeping test cases for re-testing."
+    },
+    {
+      "Deploy and operate in RAG": "This section covers deployment, logging, monitoring, security, cost control, scalability, resilience, and continuous evaluation in RAG."
+    }
+  ]
+}
