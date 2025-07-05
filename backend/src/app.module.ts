@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
-import { RouteModule } from "./routes/route.module";
+import { DocumentModule } from "./modules/document.module";
 
 @Module({
   imports: [
@@ -8,7 +8,7 @@ import { RouteModule } from "./routes/route.module";
       isGlobal: true, // make available to every module
       envFilePath: ".env",
     }),
-    RouteModule,
+    DocumentModule,
   ],
   controllers: [],
   providers: [],

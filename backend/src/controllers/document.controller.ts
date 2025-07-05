@@ -8,12 +8,13 @@ import {
   UseInterceptors,
 } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
-import { RouteService } from "./route.service";
+import { DocumentService } from "../services/document.service";
 import { diskStorage } from "multer";
 import * as path from "path";
+
 @Controller("")
-export class RouteController {
-  constructor(private readonly routeService: RouteService) {}
+export class DocumentController {
+  constructor(private readonly documentService: DocumentService) {}
 
   @Post("/upload")
   @UseInterceptors(
@@ -30,7 +31,7 @@ export class RouteController {
     })
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.routeService.uploadFile(file);
+    return this.documentService.uploadFile(file);
   }
 
   @Get("/query")
@@ -40,25 +41,11 @@ export class RouteController {
     }
 
     try {
-      const answer = await this.routeService.query(question);
+      const answer = await this.documentService.query(question);
       return { question, answer };
     } catch (error) {
       console.error(error);
       return { error: "Query failed" };
-    }
-  }
-
-  @Post("priority")
-  async setPriority(@Body("name") name: string, @Body("score") score: number) {
-    if (!name || score == null) {
-      return { error: "Missing name or score in request body" };
-    }
-    try {
-      await this.routeService.setPriority(name, score);
-      return { name, score };
-    } catch (error) {
-      console.error(error);
-      return { error: "Failed to set priority" };
     }
   }
 }

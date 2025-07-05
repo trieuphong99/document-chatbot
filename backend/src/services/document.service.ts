@@ -4,14 +4,14 @@ import * as path from "path";
 
 import { extractText } from "../utils/extract";
 import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
-import { PineconeService } from "../vectorstore/pipecone";
+import { PineconeService } from "./pipecone.service";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { PineconeStore } from "@langchain/pinecone";
 import { structureText } from "../utils/structure";
 
 @Injectable()
-export class RouteService {
+export class DocumentService {
   constructor(private readonly pineconeService: PineconeService) {}
 
   async uploadFile(file: Express.Multer.File) {
